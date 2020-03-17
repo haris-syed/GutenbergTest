@@ -18,7 +18,8 @@ wp.blocks.registerBlockType('magik-builder/border-box', {
         function updateColor(value) {
             props.setAttributes({color: value.hex})
         }
-        return React.createElement(
+        return props.isSelected ?
+            React.createElement(
             "div",
             null,
             React.createElement(
@@ -28,6 +29,12 @@ wp.blocks.registerBlockType('magik-builder/border-box', {
             ),
             React.createElement("input", { type: "text", value: props.attributes.content, onChange: updateContent }),
             React.createElement(wp.components.ColorPicker, { color: props.attributes.color, onChangeComplete: updateColor })
+        )
+        :
+        wp.element.createElement(
+            "h3",
+            { style: { border: "3px solid " + props.attributes.color } },
+            props.attributes.content
         );
     },
     save: function(props) {
