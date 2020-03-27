@@ -40,7 +40,7 @@ wp.blocks.registerBlockType('magik-builder/border-box', {
     save: function(props) {
         return wp.element.createElement(
             "h3",
-            { style: { border: "3px solid " + props.attributes.color } },
+            {style: { border: "3px solid " + props.attributes.color } },
             props.attributes.content
         );
     }

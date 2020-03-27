@@ -40,7 +40,6 @@ if(! function_exists('add_action')){
 class MagikBuilder {
     function __construct(){
         add_action( 'init', array( $this, 'create_custom_category' ) );
-
     }
 
     function activate(){
@@ -60,6 +59,10 @@ class MagikBuilder {
 
     function enqueue_scripts(){
         wp_enqueue_script( 'testblock', plugins_url( '/assets/test_block.js', __FILE__ ), array('wp-blocks','wp-editor'),
+            true );
+        wp_enqueue_script( 'timerblock', plugins_url( '/assets/timer_block.js', __FILE__ ), array('wp-blocks','wp-editor'),
+            true );
+        wp_enqueue_style('timerstyle',plugins_url( '/assets/timer_block_style.css', __FILE__ ), array('wp-edit-blocks'),
             true );
     }
 
